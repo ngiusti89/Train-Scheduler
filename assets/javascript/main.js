@@ -23,5 +23,10 @@ $(document).ready(function () {
     // capture button submit
     $('#submit-btn').on("click", function (event) {
         event.preventDefault();
+
+        train = $("#trainInput").val().trim();
+        destination = $("#destinationInput").val().trim();
+        frequency = $("#frequencyInput").val().trim();
+
     });
 })
