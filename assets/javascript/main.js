@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Initialize Firebase
+    // initialize firebase
     var config = {
         apiKey: "AIzaSyD0GBvD-lVpJKBgkgIvQKBxU8PL1TuRM7w",
         authDomain: "click-demo-e04de.firebaseapp.com",
@@ -10,23 +10,24 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
 
-    // Create a variable to reference the database
+    // variable to reference the database
     var database = firebase.database();
 
-
+    // variables
     let train = "";
     let destination = "";
     let frequency = "";
     let arrival = "";
     let minutesAway = "";
 
-    // capture button submit
+    // button to add trains
     $('#submit-btn').on("click", function (event) {
         event.preventDefault();
 
+        // user inputs
         train = $("#trainInput").val().trim();
         destination = $("#destinationInput").val().trim();
         frequency = $("#frequencyInput").val().trim();
-
+        // TODO: finish user inputs
     });
 })
