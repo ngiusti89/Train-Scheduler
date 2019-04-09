@@ -71,6 +71,7 @@ $(document).ready(function () {
         var firstTrainConverted = moment(childSnapshot.val().firstTrain, "HH:mm").subtract(1, "years");
         var timeDiff = moment().diff(moment(firstTrainConverted), "minutes");
         var remainder = timeDiff % frequency;
+        var minutesAway = frequency - remainder;
         
 
 
@@ -80,6 +81,7 @@ $(document).ready(function () {
         console.log(firstTrainConverted);
         console.log("Difference in time: " + timeDiff);
         console.log("Time remaining: " + remainder)
+        console.log("Minutes away: " + minutesAway);
         // train info
         console.log(train);
         console.log(destination);
@@ -92,7 +94,7 @@ $(document).ready(function () {
             $("<td>").text(destination),
             $("<td>").text(frequency),
             $("<td>").text("next"),
-            $("<td>").text("minutes"),
+            $("<td>").text(minutesAway),
         );
 
         $("#train-table > tbody").append(newRow);
