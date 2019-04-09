@@ -27,7 +27,6 @@ $(document).ready(function () {
         var frequency = $("#frequencyInput").val().trim();
         var firstTrain = $("#firstTrainInput").val().trim();
 
-
         // local temp object for train data
         var newTrain = {
             name: train,
@@ -45,6 +44,7 @@ $(document).ready(function () {
         console.log(newTrain.frequency);
         console.log(newTrain.firstTrain);
 
+        // alert on add
         alert("Train Added");
 
         // clears user inputs
@@ -53,9 +53,6 @@ $(document).ready(function () {
         $("#frequencyInput").val("");
         $("#firstTrainInput").val("");
     })
-
-
-
 
     // firebase event adding train data to database and displays text in html
     database.ref().on("child_added", function (childSnapshot) {
@@ -66,37 +63,41 @@ $(document).ready(function () {
         var destination = childSnapshot.val().destination;
         var frequency = childSnapshot.val().frequency;
 
-        // time variables
+        // time variables and time conversions
         var currentTime = moment();
         var firstTrainConverted = moment(childSnapshot.val().firstTrain, "HH:mm").subtract(1, "years");
         var timeDiff = moment().diff(moment(firstTrainConverted), "minutes");
         var remainder = timeDiff % frequency;
         var minutesAway = frequency - remainder;
-        
+        var nextTrain = moment().add(minutesAway, "minutes");
+        var nextTrainDisplay = moment(nextTrain).format("HH:mm")
 
 
 
         // time info
-        console.log("Current time: " + moment().format("HHmm"));
-        console.log(firstTrainConverted);
+        console.log("Current time: " + moment().format("HH:mm"));
+        console.log(firstTrainConverted.format("HH:mm"));
         console.log("Difference in time: " + timeDiff);
         console.log("Time remaining: " + remainder)
         console.log("Minutes away: " + minutesAway);
+        console.log("Next arrival: " + nextTrainDisplay);
+
         // train info
         console.log(train);
         console.log(destination);
         console.log(frequency);
 
-        // TODO: 
 
+        // add into to new table row
         var newRow = $("<tr>").append(
             $("<td>").text(train),
             $("<td>").text(destination),
             $("<td>").text(frequency),
-            $("<td>").text("next"),
+            $("<td>").text(nextTrainDisplay),
             $("<td>").text(minutesAway),
         );
 
+        // add new row to table
         $("#train-table > tbody").append(newRow);
     })
 
