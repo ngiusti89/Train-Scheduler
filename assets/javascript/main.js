@@ -70,7 +70,7 @@ $(document).ready(function () {
         var remainder = timeDiff % frequency;
         var minutesAway = frequency - remainder;
         var nextTrain = moment().add(minutesAway, "minutes");
-        var nextTrainDisplay = moment(nextTrain).format("HH:mm")
+        var nextTrainDisplay = moment(nextTrain).format("hh:mm a")
 
 
 
