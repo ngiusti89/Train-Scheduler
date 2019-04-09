@@ -1,0 +1,12 @@
+body {
+    background-color: lightslategrey;
+}
+
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#submit-btn {
+    background-color: darkorange;
+    border: none;
+}

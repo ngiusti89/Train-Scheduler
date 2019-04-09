@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
-    <!-- TODO: CSS -->
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- firebase -->
@@ -21,39 +21,43 @@
 <body>
     <div class="container">
         <!-- jumbotron -->
-        <div class="jumbotron">
+        <div class="jumbotron ">
             <h1 class="display-4 text-center">Train Scheduler</h1>
-            <p class="lead text-center">“The only way of catching a train I have ever discovered is to miss the train before.”</p>
+            <p class="lead text-center">“The only way of catching a train I have ever discovered is to miss the train
+                before.”</p>
         </div>
 
         <!-- train schedule -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Current Train Schedule</div>
+                    <div class="card-header card bg-warning text-white">Current Train Schedule</div>
                     <div class="card-body">
-                        <table class="table table-sm table-striped" id='train-table'>
-                            <thead>
-                                <tr>
-                                    <th scope="col">Train Name</th>
-                                    <th scope="col">Destination</th>
-                                    <th scope="col">Frequency (min)</th>
-                                    <th scope="col">Next Arrival</th>
-                                    <th scope="col">Minutes Away</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-lg table-striped" id='train-table'>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Train Name</th>
+                                        <th scope="col">Destination</th>
+                                        <th scope="col">Frequency (min)</th>
+                                        <th scope="col">Next Arrival</th>
+                                        <th scope="col">Minutes Away</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- add trains -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Add Train</div>
+                    <div class="card-header card bg-warning text-white">Add Train</div>
                     <div class="card-body">
                         <form>
                             <div class="form-group">
@@ -78,6 +82,7 @@
                 </div>
             </div>
         </div>
+
         <!-- javascript -->
         <script src="./assets/javascript/main.js"></script>
 

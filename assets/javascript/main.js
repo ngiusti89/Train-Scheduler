@@ -64,17 +64,20 @@ $(document).ready(function () {
         var frequency = childSnapshot.val().frequency;
 
         // time variables and time conversions
+        // current time
         var currentTime = moment();
+        // ensures first train is set in the past, not future
         var firstTrainConverted = moment(childSnapshot.val().firstTrain, "HH:mm").subtract(1, "years");
+        // minute difference between current time and train
         var timeDiff = moment().diff(moment(firstTrainConverted), "minutes");
         var remainder = timeDiff % frequency;
+        // minutes until next train
         var minutesAway = frequency - remainder;
+        // next train time, first in minutes then converted
         var nextTrain = moment().add(minutesAway, "minutes");
         var nextTrainDisplay = moment(nextTrain).format("hh:mm a")
 
-
-
-        // time info
+        // logs time info
         console.log("Current time: " + moment().format("HH:mm"));
         console.log(firstTrainConverted.format("HH:mm"));
         console.log("Difference in time: " + timeDiff);
@@ -82,11 +85,11 @@ $(document).ready(function () {
         console.log("Minutes away: " + minutesAway);
         console.log("Next arrival: " + nextTrainDisplay);
 
-        // train info
+        // logs train info
         console.log(train);
         console.log(destination);
         console.log(frequency);
-
+        console.log(firstTrainConverted);
 
         // add into to new table row
         var newRow = $("<tr>").append(
@@ -100,7 +103,4 @@ $(document).ready(function () {
         // add new row to table
         $("#train-table > tbody").append(newRow);
     })
-
-
-
 })
